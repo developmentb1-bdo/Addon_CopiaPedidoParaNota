@@ -75,7 +75,7 @@ namespace Addon_CopiaPedidoParaNota
                                   FROM ORDR
                                   WHERE ""CANCELED"" = 'N' 
                                   AND ""DocStatus"" = 'O'
-                                  AND ""U_ref_viagem_tms"" like '%{EditText0.Value}%'";
+                                  AND ""U_ref_viagem_tms"" like '%{EditText0.Value}'";
 
                     Grid0.DataTable.ExecuteQuery(query);
 
@@ -160,7 +160,7 @@ namespace Addon_CopiaPedidoParaNota
                         OINV.Address2 = ORDR.Address2;
                         OINV.PayToCode = ORDR.PayToCode;
                         OINV.ShipToCode = ORDR.ShipToCode;
-
+                        OINV.UserFields.Fields.Item("U_WB_RoutNumber").Value = ORDR.UserFields.Fields.Item("U_ref_viagem_tms").Value;
                         for (int i = 0; i < ORDR.Lines.Count; i++)
                         {
                             ORDR.Lines.SetCurrentLine(i);
