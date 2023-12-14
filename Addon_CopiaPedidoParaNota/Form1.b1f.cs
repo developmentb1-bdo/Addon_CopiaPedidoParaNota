@@ -143,7 +143,7 @@ namespace Addon_CopiaPedidoParaNota
                         OINV.DocDueDate = ORDR.DocDueDate;
                         OINV.TaxDate = ORDR.TaxDate;
                         OINV.SalesPersonCode = ORDR.SalesPersonCode;
-                        OINV.DocumentsOwner = ORDR.DocumentsOwner;
+                        //OINV.DocumentsOwner = ORDR.DocumentsOwner == 0 ? -1 : ORDR.DocumentsOwner;
                         OINV.DocTotal = ORDR.DocTotal;
                         OINV.Comments = ORDR.Comments;
                         //OINV.Series = ORDR.Series;
@@ -160,6 +160,7 @@ namespace Addon_CopiaPedidoParaNota
                         OINV.Address2 = ORDR.Address2;
                         OINV.PayToCode = ORDR.PayToCode;
                         OINV.ShipToCode = ORDR.ShipToCode;
+                        OINV.UserFields.Fields.Item("U_WB_RouteNumber").Value = ORDR.UserFields.Fields.Item("U_ref_viagem_tms").Value;
 
                         for (int i = 0; i < ORDR.Lines.Count; i++)
                         {
@@ -187,6 +188,22 @@ namespace Addon_CopiaPedidoParaNota
                             OINV.Lines.UseBaseUnits = ORDR.Lines.UseBaseUnits;
                             OINV.Lines.UnitsOfMeasurment = ORDR.Lines.UnitsOfMeasurment;
 
+
+                            for (int LineNum3 = 0; LineNum3 < ORDR.Lines.BatchNumbers.Count; ++LineNum3)
+                            {
+                                BatchNumbers batchNumbers1 = ORDR.Lines.BatchNumbers;
+                                
+                                batchNumbers1.SetCurrentLine(LineNum3);
+
+                                if (!string.IsNullOrEmpty(batchNumbers1.BatchNumber))
+                                {
+                                    OINV.Lines.BatchNumbers.BatchNumber = batchNumbers1.BatchNumber;
+                                    OINV.Lines.BatchNumbers.Quantity = batchNumbers1.Quantity;
+                                    OINV.Lines.BatchNumbers.Location = batchNumbers1.Location;
+                                    OINV.Lines.BatchNumbers.BaseLineNumber = batchNumbers1.BaseLineNumber;
+                                }
+                            }
+                            
                             OINV.Lines.Add();
                         }
 
@@ -194,6 +211,7 @@ namespace Addon_CopiaPedidoParaNota
                         {
                             OINV.TaxExtension.MainUsage = ORDR.TaxExtension.MainUsage;
                         }
+
                         OINV.TaxExtension.State = ORDR.TaxExtension.State;
                         OINV.TaxExtension.County = ORDR.TaxExtension.County;
                         OINV.TaxExtension.Incoterms = ORDR.TaxExtension.Incoterms;
