@@ -75,7 +75,7 @@ namespace Addon_CopiaPedidoParaNota
                                   FROM ORDR
                                   WHERE ""CANCELED"" = 'N' 
                                   AND ""DocStatus"" = 'O'
-                                  AND ""U_ref_viagem_tms"" like '%{EditText0.Value}%'";
+                                  AND ""U_ref_viagem_tms"" like '%{EditText0.Value}'";
 
                     Grid0.DataTable.ExecuteQuery(query);
 
