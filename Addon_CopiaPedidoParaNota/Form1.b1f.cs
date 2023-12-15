@@ -75,7 +75,7 @@ namespace Addon_CopiaPedidoParaNota
                                   FROM ORDR
                                   WHERE ""CANCELED"" = 'N' 
                                   AND ""DocStatus"" = 'O'
-                                  AND ""U_ref_viagem_tms"" like '%{EditText0.Value}'";
+                                  AND ""U_ref_viagem_tms"" like '%{EditText0.Value}%'";
 
                     Grid0.DataTable.ExecuteQuery(query);
 
@@ -96,8 +96,6 @@ namespace Addon_CopiaPedidoParaNota
                     Conexao.sbo_application.StatusBar.SetText($@"Consulta dos Pedidos realizada com sucesso."
                                     , BoMessageTime.bmt_Short, BoStatusBarMessageType.smt_Success);
                 }
-
-                
             }
             catch (Exception ex)
             {
@@ -143,14 +141,8 @@ namespace Addon_CopiaPedidoParaNota
                         OINV.DocDueDate = ORDR.DocDueDate;
                         OINV.TaxDate = ORDR.TaxDate;
                         OINV.SalesPersonCode = ORDR.SalesPersonCode;
-                        //OINV.DocumentsOwner = ORDR.DocumentsOwner == 0 ? -1 : ORDR.DocumentsOwner;
                         OINV.DocTotal = ORDR.DocTotal;
                         OINV.Comments = ORDR.Comments;
-                        //OINV.Series = ORDR.Series;
-                        //OINV.SeriesString = ORDR.SeriesString;
-                        //OINV.SequenceCode = ORDR.SequenceCode;
-                        //OINV.SequenceModel = ORDR.SequenceModel;
-                        //OINV.SequenceSerial = ORDR.SequenceSerial;
                         OINV.JournalMemo = ORDR.JournalMemo;
                         OINV.ClosingRemarks = ORDR.ClosingRemarks;
                         OINV.OpeningRemarks = ORDR.OpeningRemarks;
@@ -187,7 +179,6 @@ namespace Addon_CopiaPedidoParaNota
                             OINV.Lines.AccountCode = ORDR.Lines.AccountCode;
                             OINV.Lines.UseBaseUnits = ORDR.Lines.UseBaseUnits;
                             OINV.Lines.UnitsOfMeasurment = ORDR.Lines.UnitsOfMeasurment;
-
 
                             for (int LineNum3 = 0; LineNum3 < ORDR.Lines.BatchNumbers.Count; ++LineNum3)
                             {
