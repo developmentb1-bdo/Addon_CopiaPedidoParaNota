@@ -68,14 +68,34 @@
   <ItemGroup>
     <None Include="Form1.b1f">
       <FormCategory>UserForm</FormCategory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <Compile Include="Conexao.cs" />
+    <Compile Include="CreateFields.cs" />
     <Compile Include="Form1.b1f.cs">
       <DependentUpon>Form1.b1f</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="FormPicking.b1f.cs">
+      <DependentUpon>FormPicking.b1f</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="NotaFiscalEntrada.b1f.cs">
+      <DependentUpon>NotaFiscalEntrada.b1f</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="FormPicking.b1f">
+      <FormCategory>UserForm</FormCategory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="NotaFiscalEntrada.b1f">
+      <FormCategory>SystemForm</FormCategory>
+    </None>
+    <None Include="NotaFiscalEntrada.b1f__orig_srf">
+      <DependentUpon>NotaFiscalEntrada.b1f</DependentUpon>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

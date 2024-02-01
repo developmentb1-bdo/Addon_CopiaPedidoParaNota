@@ -71,7 +71,7 @@ namespace Addon_CopiaPedidoParaNota
                                          ""DocEntry"" ""Nº Primário"", 
                                          ""DocNum"" ""Nº do Doc"", 
                                          ""CardCode"" ""Cod. PN"", 
-                                         ""CardName"" ""Nome do PN"" 
+                                         ""CardName"" ""Nome do PN""
                                   FROM ORDR
                                   WHERE ""CANCELED"" = 'N' 
                                   AND ""DocStatus"" = 'O'
@@ -132,16 +132,18 @@ namespace Addon_CopiaPedidoParaNota
 
                         SAPbobsCOM.Documents OINV = (SAPbobsCOM.Documents)Conexao.diCompany.GetBusinessObject(BoObjectTypes.oInvoices);
 
+                        DateTime dateTime = DateTime.Now;
+
                         OINV.CardCode = ORDR.CardCode;
                         OINV.CardName = ORDR.CardName;
                         OINV.ContactPersonCode = ORDR.ContactPersonCode;
                         OINV.NumAtCard = ORDR.NumAtCard;
                         OINV.BPL_IDAssignedToInvoice = ORDR.BPL_IDAssignedToInvoice;
-                        OINV.DocDate = ORDR.DocDate;
-                        OINV.DocDueDate = ORDR.DocDueDate;
-                        OINV.TaxDate = ORDR.TaxDate;
+                        OINV.DocDate = dateTime;
+                        //OINV.DocDueDate = ORDR.DocDueDate;
+                        OINV.TaxDate = dateTime;
                         OINV.SalesPersonCode = ORDR.SalesPersonCode;
-                        OINV.DocTotal = ORDR.DocTotal;
+                        //OINV.DocTotal = ORDR.DocTotal;
                         OINV.Comments = ORDR.Comments;
                         OINV.JournalMemo = ORDR.JournalMemo;
                         OINV.ClosingRemarks = ORDR.ClosingRemarks;

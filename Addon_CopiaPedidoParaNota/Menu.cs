@@ -47,6 +47,11 @@ namespace Addon_CopiaPedidoParaNota
                 oCreationPackage.UniqueID = "Addon_CopiaPedidoParaNota.Form1";
                 oCreationPackage.String = "Criar Nota Fiscal em Lote";
                 oMenus.AddEx(oCreationPackage);
+
+                //oCreationPackage.Type = SAPbouiCOM.BoMenuType.mt_STRING;
+                //oCreationPackage.UniqueID = "Addon_CopiaPedidoParaNota.FormPicking";
+                //oCreationPackage.String = "Autorizar e Efetuar Picking";
+                //oMenus.AddEx(oCreationPackage);
             }
             catch (Exception er)
             { //  Menu already exists
@@ -65,6 +70,12 @@ namespace Addon_CopiaPedidoParaNota
                     Form1 activeForm = new Form1();
                     activeForm.Show();
                 }
+
+                //if (pVal.BeforeAction && pVal.MenuUID == "Addon_CopiaPedidoParaNota.FormPicking")
+                //{
+                //    FormPicking activeForm = new FormPicking();
+                //    activeForm.Show();
+                //}
             }
             catch (Exception ex)
             {

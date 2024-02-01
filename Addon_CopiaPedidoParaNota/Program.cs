@@ -29,6 +29,9 @@ namespace Addon_CopiaPedidoParaNota
                 Conexao conexao = null;
                 conexao = new Conexao();
 
+                CreateFields createFields = new CreateFields();
+                createFields.EventHandlerStart();
+
                 Menu MyMenu = new Menu();
                 MyMenu.AddMenuItems();
                 oApp.RegisterMenuEventHandler(MyMenu.SBO_Application_MenuEvent);
